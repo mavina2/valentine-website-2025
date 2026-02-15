@@ -3,14 +3,9 @@ const config = window.VALENTINE_CONFIG;
 // Set page title
 document.title = config.pageTitle;
 
-// Set title name
-document.getElementById("title-name").innerText = config.valentineName + " 💖";
-
 // Floating emojis
-createFloatingEmojis();
 function createFloatingEmojis() {
     const allEmojis = [...config.floatingEmojis.hearts, ...config.floatingEmojis.bears];
-
     for (let i = 0; i < 25; i++) {
         const emoji = document.createElement("div");
         emoji.innerText = allEmojis[Math.floor(Math.random() * allEmojis.length)];
@@ -25,21 +20,129 @@ function createFloatingEmojis() {
         document.body.appendChild(emoji);
     }
 }
+createFloatingEmojis();
 
-// Apply gradient background
-document.body.style.background = `linear-gradient(135deg, ${config.colors.backgroundStart}, ${config.colors.backgroundEnd})`;
-document.body.style.fontFamily = "sans-serif";
-document.body.style.textAlign = "center";
-document.body.style.padding = "40px";
+// Start button
+const titleScreen = document.getElementById("title-screen");
+const startBtn = document.getElementById("start-btn");
+const questionScreen = document.getElementById("question-screen");
+const questionText = document.getElementById("question-text");
+const buttonContainer = document.getElementById("button-container");
+const meterScreen = document.getElementById("meter-screen");
+const meterQuestion = document.getElementById("meter-question");
+const loveSlider = document.getElementById("love-slider");
+const loveMessage = document.getElementById("love-message");
+const nextBtn = document.getElementById("next-btn");
+const celebrationScreen = document.getElementById("celebration-screen");
+const celebrationTitle = document.getElementById("celebration-title");
+const celebrationMessage = document.getElementById("celebration-message");
 
-// Music
+// Button styling
+function styleButton(btn) {
+    btn.className = "btn";
+    btn.style.background = config.colors.buttonBackground;
+    btn.style.color = "white";
+    btn.style.border = "none";
+    btn.style.padding = "12px 25px";
+    btn.style.margin = "10px";
+    btn.style.borderRadius = "25px";
+    btn.style.cursor = "pointer";
+    btn.style.fontSize = "16px";
+    btn.style.transition = "0.3s";
+    btn.onmouseover = () => btn.style.background = config.colors.buttonHover;
+    btn.onmouseout = () => btn.style.background = config.colors.buttonBackground;
+}
+
+// START BUTTON
+startBtn.addEventListener("click", () => {
+    titleScreen.style.display = "none";
+    showFirstQuestion();
+});
+
+// FIRST QUESTION
+function showFirstQuestion() {
+    questionScreen.style.display = "block";
+    questionText.innerText = config.questions.first.text;
+    buttonContainer.innerHTML = "";
+
+    const yesBtn = document.createElement("button");
+    yesBtn.innerText = config.questions.first.yesBtn;
+    styleButton(yesBtn);
+
+    const noBtn = document.createElement("button");
+    noBtn.innerText = config.questions.first.noBtn;
+    styleButton(noBtn);
+
+    yesBtn.onclick = showSecondQuestion;
+    noBtn.onclick = showSecondQuestion;
+
+    buttonContainer.appendChild(yesBtn);
+    buttonContainer.appendChild(noBtn);
+}
+
+// SECOND QUESTION (LOVE METER)
+function showSecondQuestion() {
+    questionScreen.style.display = "none";
+    meterScreen.style.display = "block";
+    meterQuestion.innerText = config.questions.second.text;
+    nextBtn.innerText = config.questions.second.nextBtn;
+
+    loveSlider.oninput = () => {
+        const value = loveSlider.value;
+        if (value > 5000) loveMessage.innerText = config.loveMessages.extreme;
+        else if (value > 1000) loveMessage.innerText = config.loveMessages.high;
+        else loveMessage.innerText = config.loveMessages.normal;
+    };
+    styleButton(nextBtn);
+    nextBtn.onclick = showThirdQuestion;
+}
+
+// THIRD QUESTION
+function showThirdQuestion() {
+    meterScreen.style.display = "none";
+    questionScreen.style.display = "block";
+    questionText.innerText = config.questions.third.text;
+    buttonContainer.innerHTML = "";
+
+    const yesBtn = document.createElement("button");
+    yesBtn.innerText = config.questions.third.yesBtn;
+    styleButton(yesBtn);
+
+    const noBtn = document.createElement("button");
+    noBtn.innerText = config.questions.third.noBtn;
+    styleButton(noBtn);
+
+    yesBtn.onclick = showCelebration;
+    noBtn.onclick = showCelebration;
+
+    buttonContainer.appendChild(yesBtn);
+    buttonContainer.appendChild(noBtn);
+}
+
+// CELEBRATION
+function showCelebration() {
+    questionScreen.style.display = "none";
+    celebrationScreen.style.display = "block";
+    celebrationTitle.innerText = config.celebration.title;
+    celebrationMessage.innerText = config.celebration.message;
+
+    for (let i = 0; i < 20; i++) {
+        const emoji = document.createElement("div");
+        emoji.innerText = config.celebration.emojis[Math.floor(Math.random() * config.celebration.emojis.length)];
+        emoji.style.position = "fixed";
+        emoji.style.left = Math.random() * 100 + "vw";
+        emoji.style.top = Math.random() * 100 + "vh";
+        emoji.style.fontSize = "24px";
+        emoji.style.animation = `float ${config.animations.floatDuration} infinite alternate`;
+        document.body.appendChild(emoji);
+    }
+}
+
+// MUSIC BUTTON
 const musicToggle = document.getElementById("musicToggle");
 const bgMusic = document.getElementById("bgMusic");
-const musicSource = document.getElementById("musicSource");
-
-musicSource.src = config.music.musicUrl;
+bgMusic.src = config.music.musicUrl;
 bgMusic.volume = config.music.volume || 0.5;
-bgMusic.load();
 
 musicToggle.addEventListener("click", () => {
     if (bgMusic.paused) {
@@ -50,91 +153,3 @@ musicToggle.addEventListener("click", () => {
         musicToggle.textContent = config.music.startText;
     }
 });
-
-// Title screen start button
-const startBtn = document.getElementById("start-btn");
-startBtn.addEventListener("click", () => {
-    document.getElementById("title-screen").style.display = "none";
-    showFirstQuestion();
-});
-
-// First question
-function showFirstQuestion() {
-    const questionScreen = document.getElementById("question-screen");
-    const questionText = document.getElementById("question-text");
-    const buttonContainer = document.getElementById("button-container");
-
-    questionScreen.style.display = "block";
-    questionText.innerText = config.questions.first.text;
-
-    buttonContainer.innerHTML = "";
-
-    const yesBtn = document.createElement("button");
-    yesBtn.innerText = config.questions.first.yesBtn;
-    yesBtn.className = "btn";
-    yesBtn.onclick = showSecondQuestion;
-
-    const noBtn = document.createElement("button");
-    noBtn.innerText = config.questions.first.noBtn;
-    noBtn.className = "btn";
-    noBtn.onclick = showSecondQuestion;
-
-    buttonContainer.appendChild(yesBtn);
-    buttonContainer.appendChild(noBtn);
-}
-
-// Second question (love meter)
-function showSecondQuestion() {
-    document.getElementById("question-screen").style.display = "none";
-    const meterScreen = document.getElementById("meter-screen");
-    meterScreen.style.display = "block";
-
-    document.getElementById("meter-question").innerText = config.questions.second.text;
-    const loveSlider = document.getElementById("love-slider");
-    const loveMessage = document.getElementById("love-message");
-    const nextBtn = document.getElementById("next-btn");
-
-    loveSlider.oninput = () => {
-        const value = loveSlider.value;
-        if (value > 5000) loveMessage.innerText = config.loveMessages.extreme;
-        else if (value > 1000) loveMessage.innerText = config.loveMessages.high;
-        else loveMessage.innerText = config.loveMessages.normal;
-    };
-
-    nextBtn.innerText = config.questions.second.nextBtn;
-    nextBtn.onclick = showThirdQuestion;
-}
-
-// Third question
-function showThirdQuestion() {
-    document.getElementById("meter-screen").style.display = "none";
-    const questionScreen = document.getElementById("question-screen");
-    questionScreen.style.display = "block";
-    const questionText = document.getElementById("question-text");
-    const buttonContainer = document.getElementById("button-container");
-
-    questionText.innerText = config.questions.third.text;
-    buttonContainer.innerHTML = "";
-
-    const yesBtn = document.createElement("button");
-    yesBtn.innerText = config.questions.third.yesBtn;
-    yesBtn.className = "btn";
-    yesBtn.onclick = showCelebration;
-
-    const noBtn = document.createElement("button");
-    noBtn.innerText = config.questions.third.noBtn;
-    noBtn.className = "btn";
-    noBtn.onclick = showCelebration;
-
-    buttonContainer.appendChild(yesBtn);
-    buttonContainer.appendChild(noBtn);
-}
-
-// Celebration
-function showCelebration() {
-    document.getElementById("question-screen").style.display = "none";
-    const celebrationScreen = document.getElementById("celebration-screen");
-    celebrationScreen.style.display = "block";
-    document.getElementById("celebration-title").innerText = config.celebration.title;
-    document.getElementById("celebration-message").innerText = config.celebration.message;
-}
