@@ -1,6 +1,9 @@
 const config = window.VALENTINE_CONFIG;
 
 
+document.title = config.pageTitle;
+createFloatingEmojis();
+
 // FLOATING EMOJIS BACKGROUND
 function createFloatingEmojis() {
     const allEmojis = [
