@@ -1,5 +1,31 @@
 const config = window.VALENTINE_CONFIG;
 
+
+// FLOATING EMOJIS BACKGROUND
+function createFloatingEmojis() {
+    const allEmojis = [
+        ...config.floatingEmojis.hearts,
+        ...config.floatingEmojis.bears
+    ];
+
+    for (let i = 0; i < 25; i++) {
+        const emoji = document.createElement("div");
+        emoji.innerText = allEmojis[Math.floor(Math.random() * allEmojis.length)];
+
+        emoji.style.position = "fixed";
+        emoji.style.left = Math.random() * 100 + "vw";
+        emoji.style.bottom = "-40px";
+        emoji.style.fontSize = (20 + Math.random() * 20) + "px";
+        emoji.style.opacity = 0.8;
+        emoji.style.pointerEvents = "none";
+        emoji.style.animation = `floatUp ${config.animations.floatDuration} linear infinite`;
+
+        emoji.style.animationDelay = Math.random() * 20 + "s";
+
+        document.body.appendChild(emoji);
+    }
+}
+
 // Apply page title
 document.title = config.pageTitle;
 
