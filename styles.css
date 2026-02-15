@@ -59,6 +59,8 @@ body {
     }
 }
 
+
+
 .cute-btn {
     background: var(--button-color);
     border: none;
@@ -316,3 +318,15 @@ h2 {
     transform: scale(1.05);
     background: var(--secondary-color);
 } 
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0px) translateX(0px);
+    }
+    50% {
+        transform: translateY(-50vh) translateX(30px);
+    }
+    100% {
+        transform: translateY(-100vh) translateX(-30px);
+    }
+}
