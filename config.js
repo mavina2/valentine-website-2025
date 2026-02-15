@@ -35,7 +35,7 @@ const CONFIG = {
     celebration: {
         title: "Yay! I'm the luckiest person in the world! 🎉💝💖💝💓",
         message: "Kiss forever",
-        emojis: ['💖','💝','❤️','💕']
+        emojis: "💖💝❤️💕"
     },
 
     colors: {
