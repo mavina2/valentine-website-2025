@@ -2,47 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Website</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<div class="floating-elements"></div>
-
 <body>
 
-<div class="floating-elements"></div>
+    <!-- Floating emojis container -->
+    <div class="floating-elements"></div>
 
-<div class="container">
+    <!-- Music controls -->
+    <div class="music-controls">
+        <button id="musicToggle" class="music-btn">🎵 Play Music</button>
+        <audio id="bgMusic" loop>
+            <source id="musicSource" src="" type="audio/mpeg">
+        </audio>
+    </div>
 
     <!-- TITLE SCREEN -->
     <div id="title-screen">
         <h1 id="title-name"></h1>
         <p>Be My Valentine Forever 💝</p>
-        <button id="start-btn" class="btn">Open 💌</button>
+        <div id="valentine-image-container">
+            <img id="valentine-image" 
+                 src="minion.png" 
+                 alt="Minion Valentine" />
+        </div>
+        <button id="start-btn" class="btn">Start 💖</button>
     </div>
 
     <!-- QUESTION SCREEN -->
-    <div id="question-screen" style="display: none;">
-        <h1 id="question-text"></h1>
+    <div id="question-screen" class="hidden">
+        <p id="question-text"></p>
         <div id="button-container"></div>
     </div>
 
     <!-- LOVE METER SCREEN -->
-    <div id="meter-screen" style="display: none;">
-        <h1 id="meter-question"></h1>
+    <div id="meter-screen" class="hidden">
+        <p id="meter-question"></p>
         <input type="range" id="love-slider" min="0" max="6000" value="100">
         <p id="love-message"></p>
         <button id="next-btn" class="btn"></button>
     </div>
 
     <!-- CELEBRATION SCREEN -->
-    <div id="celebration-screen" style="display: none;">
+    <div id="celebration-screen" class="hidden">
         <h1 id="celebration-title"></h1>
         <p id="celebration-message"></p>
     </div>
 
-</div>
-
-<script src="config.js"></script>
-<script src="script.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
