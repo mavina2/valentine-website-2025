@@ -19,7 +19,7 @@ const CONFIG = {
     // Customize each question and its possible responses
     questions: {
         first: {
-            text: "Do you be my bello minion?",                                    // First interaction
+            text: "Be my bello minion?",                                    // First interaction
             yesBtn: "Yes",                                             // Text for "Yes" button
             noBtn: "No",                                               // Text for "No" button
             secretAnswer: "I love you bello"           // Secret hover message
