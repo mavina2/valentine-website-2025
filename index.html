@@ -2,58 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Forever Valentine? 💝</title>
+    <title></title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<div class="floating-elements"></div>
+
 <body>
 
-    <!-- Floating emojis container -->
-    <div class="floating-elements"></div>
+<div class="floating-elements"></div>
 
-    <!-- Music controls -->
-    <div class="music-controls">
-        <button id="musicToggle" class="music-btn">🎵 Play Music</button>
-        <audio id="bgMusic" loop>
-            <source id="musicSource" src="" type="audio/mpeg">
-        </audio>
-    </div>
+<div class="container">
 
     <!-- TITLE SCREEN -->
-    <div id="title-screen" class="container-box">
+    <div id="title-screen">
         <h1 id="title-name"></h1>
         <p>Be My Valentine Forever 💝</p>
-
-        <div id="valentine-image-container">
-            <img id="valentine-image" 
-                 src="https://upload.wikimedia.org/wikipedia/en/7/7a/Minion_(Despicable_Me).png" 
-                 alt="Minion Valentine" />
-        </div>
-
-        <button id="start-btn" class="btn">Start 💖</button>
+        <button id="start-btn" class="btn">Open 💌</button>
     </div>
 
     <!-- QUESTION SCREEN -->
-    <div id="question-screen" class="hidden container-box">
-        <p id="question-text"></p>
+    <div id="question-screen" style="display: none;">
+        <h1 id="question-text"></h1>
         <div id="button-container"></div>
     </div>
 
     <!-- LOVE METER SCREEN -->
-    <div id="meter-screen" class="hidden container-box">
-        <p id="meter-question"></p>
+    <div id="meter-screen" style="display: none;">
+        <h1 id="meter-question"></h1>
         <input type="range" id="love-slider" min="0" max="6000" value="100">
         <p id="love-message"></p>
         <button id="next-btn" class="btn"></button>
     </div>
 
     <!-- CELEBRATION SCREEN -->
-    <div id="celebration-screen" class="hidden container-box">
+    <div id="celebration-screen" style="display: none;">
         <h1 id="celebration-title"></h1>
         <p id="celebration-message"></p>
     </div>
 
-    <script src="config.js"></script>
-    <script src="script.js"></script>
+</div>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
