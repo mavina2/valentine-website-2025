@@ -1,14 +1,32 @@
-/* GENERAL PAGE STYLING */
+:root {
+    --background-color-1: #ffafbd;
+    --background-color-2: #ffc3a0;
+    --button-color: #ff6b6b;
+    --button-hover: #ff8787;
+    --text-color: #ff4757;
+    --float-duration: 15s;
+    --float-distance: 50px;
+}
+
 body {
     margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+    background: linear-gradient(135deg, var(--background-color-1), var(--background-color-2));
     text-align: center;
     overflow-x: hidden;
 }
 
-/* FLOATING EMOJIS */
+.container-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+}
+
 .floating-elements {
     position: fixed;
     width: 100%;
@@ -17,32 +35,19 @@ body {
     z-index: 1;
 }
 
-/* FLOATING EMOJI ANIMATION */
-@keyframes floatUp {
+.heart, .bear {
+    position: absolute;
+    font-size: 2rem;
+    animation: float var(--float-duration) linear infinite;
+}
+
+@keyframes float {
     0% { transform: translateY(100vh) translateX(0); }
-    100% { transform: translateY(-100px) translateX(50px); }
+    100% { transform: translateY(-100px) translateX(var(--float-distance)); }
 }
 
-/* WHITE CONTAINER FOR QUESTIONS & LOVE METER */
-.container-box {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem 2rem;
-    border-radius: 20px;
-    max-width: 600px;
-    margin: 20px auto;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    z-index: 2;
-    position: relative;
-}
-
-/* HIDE ELEMENTS */
-.hidden {
-    display: none;
-}
-
-/* BUTTON STYLING */
 .btn {
-    background: #ff6b6b;
+    background: var(--button-color);
     color: white;
     border: none;
     padding: 12px 25px;
@@ -54,56 +59,24 @@ body {
 }
 
 .btn:hover {
-    background: #ff8787;
+    background: var(--button-hover);
     transform: scale(1.05);
 }
 
-/* TITLE SCREEN IMAGE */
-#valentine-image-container img {
-    max-width: 250px;
-    margin: 15px 0;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
+.hidden { display: none; }
 
-/* LOVE SLIDER */
-#love-slider {
-    width: 100%;
-    margin: 20px 0;
-    height: 25px;
-    border-radius: 15px;
-    background: linear-gradient(to right, #ff6b6b, #ff8787, #ffb8b8);
-    outline: none;
-}
-
-/* LOVE METER MESSAGE */
-#love-message {
-    font-weight: bold;
-    color: #ff4757;
-    margin-top: 10px;
-}
-
-/* MUSIC BUTTON */
 .music-controls {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1000;
+    z-index: 5;
 }
 
 .music-btn {
-    background: #ff6b6b;
+    background: var(--button-color);
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 20px;
+    border-radius: 25px;
     cursor: pointer;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-}
-
-.music-btn:hover {
-    transform: scale(1.05);
-    background: #ff8787;
 }
