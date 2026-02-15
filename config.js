@@ -40,8 +40,8 @@ const CONFIG = {
     // They show up depending on how far they slide the meter
     loveMessages: {
         extreme: "Always dream come true",  // Shows when they go past 5000%
-        high: "forever",              // Shows when they go past 1000%
-        normal: "And beyond! "                           // Shows when they go past 100%
+        high: "forever come true ",              // Shows when they go past 1000%
+        normal: "ALWAYS and i hope i there! "                           // Shows when they go past 100%
     },
 
     // Messages that appear after they say "Yes!"
