@@ -1,86 +1,66 @@
-
-
 const CONFIG = {
-
     valentineName: "Mario",
-
-    // The title that appears in the browser tab
-    // You can use emojis! 💝 💖 💗 💓 💞 💕
     pageTitle: "Will You Be My Forever Valentine? 💝",
 
- 
-
     floatingEmojis: {
-        hearts: ['❤️', '💖', '💝', '💗', '💓'],  // Heart emojis
-        bears: ['🧸']                       // Cute bear emojis
+        hearts: ['❤️', '💖', '💝', '💗', '💓'],
+        bears: ['🧸', '🐻']
     },
 
-    // Questions and answers
-    // Customize each question and its possible responses
     questions: {
         first: {
-            text: "Be my bello minion?",                                    // First interaction
-            yesBtn: "Yes",                                             // Text for "Yes" button
-            noBtn: "No",                                               // Text for "No" button
-            secretAnswer: "I love you bello"           // Secret hover message
+            text: "Be my bello minion?",
+            yesBtn: "Yes",
+            noBtn: "No",
+            secretAnswer: "I love you bello"
         },
         second: {
-            text: "How much I wish your dreams come true",                          // For the love meter
-            startText: "This much!",                                   // Text before the percentage
-            nextBtn: "Next ❤️"                                         // Text for the next button
+            text: "How much I wish your dreams come true",
+            startText: "This much!",
+            nextBtn: "Next ❤️"
         },
         third: {
-            text: " Think about you forever ", // The big question!
-            yesBtn: "Yes!",                                             // Text for "Yes" button
-            noBtn: "No"                                                 // Text for "No" button
+            text: "Think about you forever",
+            yesBtn: "Yes!",
+            noBtn: "No"
         }
     },
 
-    // Love meter messages
-    // They show up depending on how far they slide the meter
     loveMessages: {
-        extreme: "Always dream come true",  // Shows when they go past 5000%
-        high: "forever come true ",              // Shows when they go past 1000%
-        normal: "ALWAYS and i hope i there! "                           // Shows when they go past 100%
+        extreme: "Always dream come true",
+        high: "Forever",
+        normal: "And beyond!"
     },
 
-    // Messages that appear after they say "Yes!"
     celebration: {
         title: "Yay! I'm the luckiest person in the world! 🎉💝💖💝💓",
-        message: "kiss forever",
-        emojis: "💖💝❤️💕"  // These will bounce around
+        message: "Kiss forever",
+        emojis: ['💖','💝','❤️','💕']
     },
 
-    // Color scheme for the website
-    // Use https://colorhunt.co or https://coolors.co to find beautiful color combinations
     colors: {
-        backgroundStart: "#ffafbd",      // Gradient start (try pastel colors for a soft look)
-        backgroundEnd: "#ffc3a0",        // Gradient end (should complement backgroundStart)
-        buttonBackground: "#ff6b6b",     // Button color (should stand out against the background)
-        buttonHover: "#ff8787",          // Button hover color (slightly lighter than buttonBackground)
-        textColor: "#ff4757"             // Text color (make sure it's readable!)
+        backgroundStart: "#ffafbd",
+        backgroundEnd: "#ffc3a0",
+        buttonBackground: "#ff6b6b",
+        buttonHover: "#ff8787",
+        textColor: "#ff4757"
     },
 
-    // Animation settings
-    // Adjust these if you want faster/slower animations
     animations: {
-        floatDuration: "15s",           // How long it takes hearts to float up (10-20s recommended)
-        floatDistance: "50px",          // How far hearts move sideways (30-70px recommended)
-        bounceSpeed: "0.5s",            // Speed of bouncing animations (0.3-0.7s recommended)
-        heartExplosionSize: 1.5         // Size of heart explosion effect (1.2-2.0 recommended)
+        floatDuration: "15s",
+        floatDistance: "50px",
+        bounceSpeed: "0.5s",
+        heartExplosionSize: 1.5
     },
 
-    // Background Music (Optional)
-    // Add your own music URL after getting proper licenses
     music: {
-        enabled: true,                     // Music feature is enabled
-        autoplay: true,                    // Try to autoplay (note: some browsers may block this)
-        musicUrl: "https://soundcloud.com/liluzivert/chrome-heart-tags?in=evan33/sets/uzi&si=e50a721ea4e0413a8c253ccb426fa23c&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", // Music streaming URL
-        startText: "🎵 Play Music",        // Button text to start music
-        stopText: "🔇 Stop Music",         // Button text to stop music
-        volume: 0.5                        // Volume level (0.0 to 1.0)
+        enabled: true,
+        autoplay: true,
+        musicUrl: "https://soundcloud.com/liluzivert/chrome-heart-tags?si=0be7f7fbc90e44e9a3f3d1e201bc317d&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+        startText: "🎵 Play Music",
+        stopText: "🔇 Stop Music",
+        volume: 0.5
     }
 };
 
-// Don't modify anything below this line unless you know what you're doing
-window.VALENTINE_CONFIG = CONFIG; 
+window.VALENTINE_CONFIG = CONFIG;
