@@ -4,58 +4,71 @@
     --button-color: #ff6b6b;
     --button-hover: #ff8787;
     --text-color: #ff4757;
-    --float-duration: 15s;
-    --float-distance: 50px;
 }
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, var(--background-color-1), var(--background-color-2));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     text-align: center;
     overflow-x: hidden;
 }
 
-.container-box {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
-    border-radius: 20px;
-    margin: 20px auto;
-    max-width: 600px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+/* MAIN WHITE BOX */
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem 2rem;
+    border-radius: 25px;
+    max-width: 700px;
+    width: 90%;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     position: relative;
     z-index: 2;
 }
 
+/* Floating emojis stay behind */
 .floating-elements {
     position: fixed;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
 }
 
-.heart, .bear {
-    position: absolute;
-    font-size: 2rem;
-    animation: float var(--float-duration) linear infinite;
+/* Title spacing */
+#title-screen h1 {
+    margin-bottom: 10px;
 }
 
-@keyframes float {
-    0% { transform: translateY(100vh) translateX(0); }
-    100% { transform: translateY(-100px) translateX(var(--float-distance)); }
+#title-screen p {
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
+/* Minion image */
+#title-screen img {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 220px;
+    border-radius: 15px;
+}
+
+/* Buttons */
 .btn {
     background: var(--button-color);
     color: white;
     border: none;
-    padding: 12px 25px;
-    margin: 10px;
-    border-radius: 25px;
+    padding: 14px 30px;
+    margin: 10px auto;
+    border-radius: 30px;
     cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
+    font-size: 18px;
+    transition: 0.3s ease;
+    display: inline-block;
 }
 
 .btn:hover {
@@ -63,20 +76,13 @@ body {
     transform: scale(1.05);
 }
 
-.hidden { display: none; }
-
-.music-controls {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 5;
+/* Slider styling */
+input[type="range"] {
+    width: 80%;
+    margin: 20px 0;
 }
 
-.music-btn {
-    background: var(--button-color);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
+/* Hide sections cleanly */
+.hidden {
+    display: none;
 }
